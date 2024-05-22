@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public interface ResourceService {
-    Integer createResource(InputStream data) throws TikaException, IOException, SAXException;
+    Integer createResource(byte[] data) throws TikaException, IOException, SAXException;
 
     byte[] getResourceById(Integer id);
 

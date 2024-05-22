@@ -25,7 +25,7 @@ public class SongServiceClientImpl implements SongServiceClient {
     @Override
     public void deleteMetadataByResourceId(Integer id) {
         webClient.delete()
-                .uri("http://localhost:8081/songs/by-resource?resourceIds=" + id)
+                .uri("http://localhost:8081/songs?id=" + id)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve().toBodilessEntity().block();
     }

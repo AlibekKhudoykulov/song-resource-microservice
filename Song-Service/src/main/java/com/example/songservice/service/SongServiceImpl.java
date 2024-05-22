@@ -25,7 +25,7 @@ public class SongServiceImpl implements SongService{
                 songDTO.getAlbum(),
                 songDTO.getLength(),
                 songDTO.getResourceId(),
-                Integer.toString(songDTO.getYear())
+                songDTO.getYear()
         );
         Song save = songRepository.save(song);
         Map<String, Integer> response = new HashMap<>();
@@ -45,7 +45,7 @@ public class SongServiceImpl implements SongService{
                         song.getAlbum(),
                         song.getLength(),
                         song.getResourceId(),
-                        Integer.parseInt(song.getYear())
+                        song.getYear()
                 );
                 return new ResponseEntity<>(songDTO, HttpStatus.OK);
             } else {

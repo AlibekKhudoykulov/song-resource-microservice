@@ -31,17 +31,16 @@ public class ResourceServiceImpl implements ResourceService{
     }
 
     @Override
-    public Integer createResource(InputStream data) throws TikaException, IOException, SAXException {
+    public Integer createResource(byte[] data) throws TikaException, IOException, SAXException {
         BodyContentHandler handler = new BodyContentHandler();
         Metadata metadata = new Metadata();
         ParseContext context = new ParseContext();
-        byte[] byteArray = data.readAllBytes();
 
         Mp3Parser Mp3Parser = new Mp3Parser();
-        Mp3Parser.parse(new ByteArrayInputStream(byteArray), handler, metadata, context);
+        Mp3Parser.parse(new ByteArrayInputStream(data), handler, metadata, context);
 
         Resource resource = new Resource();
-        resource.setContent(byteArray);
+        resource.setContent(data);
         Resource save = resourceRepository.save(resource);
         Integer id = save.getId();
         SongDTO songInfoDto = SongDTO.builder()
