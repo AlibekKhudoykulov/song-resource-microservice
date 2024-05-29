@@ -16,7 +16,7 @@ public class SongServiceClientImpl implements SongServiceClient {
     @Override
     public void saveMetadata(SongDTO songDTO) {
         webClient.post()
-                .uri("http://localhost:8081/songs")
+                .uri("http://song-service:8081/songs")
                 .bodyValue(songDTO)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve().toBodilessEntity().block();
@@ -25,7 +25,7 @@ public class SongServiceClientImpl implements SongServiceClient {
     @Override
     public void deleteMetadataByResourceId(Integer id) {
         webClient.delete()
-                .uri("http://localhost:8081/songs?id=" + id)
+                .uri("http://song-service:8081/songs?id=" + id)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve().toBodilessEntity().block();
     }
